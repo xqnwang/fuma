@@ -13,7 +13,6 @@ Imports:
         magrittr,
         forecast (>= 8.3),
         gratis (>= 0.2),
-        M4metalearning,
         mgcv,
         Mcomp,
         parallel,
