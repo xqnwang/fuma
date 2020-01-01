@@ -17,7 +17,7 @@ devtools::install_github("xqnwang/fuma")
 Usage
 -----
 
-This part explains how to reproduce the results for our working paper. The feature-based framework for the uncertainty estimation is applied in this part to obtain the forecasts and prediction intervals of M3 dataset for the confidence level $95\%$.
+This part explains how to reproduce the results for our working paper. The feature-based framework for the uncertainty estimation is applied in this part to obtain the forecasts and prediction intervals of M3 dataset for the confidence level 95\%.
 
 ### The reference dataset and test dataset
 
@@ -51,7 +51,7 @@ test <- Filter(function(l) l$period != "OTHER", M3)
 
 ### Train benchmark models on reference dataset
 
-Benchmark models considered in this document are auto\_arima, ets, tbats, stlm\_ar, rw\_drift, thetaf, na\"{i}ve and sna\"{i}ve.
+Benchmark models considered in this document are auto\_arima, ets, tbats, stlm\_ar, rw\_drift, thetaf, naive and snaive.
 
 ``` r
 # train benchmark models and obtain forecasts and prediction intervals
