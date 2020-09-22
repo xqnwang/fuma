@@ -4,8 +4,14 @@
 \alias{choose.threshold}
 \title{Search the optimal threshold ratio used for model averaging}
 \usage{
-choose.threshold(dataset, fitProb, ratio, combine = "mean", level,
-  parallel = FALSE)
+choose.threshold(
+  dataset,
+  fitProb,
+  ratio,
+  combine = "mean",
+  level,
+  parallel = FALSE
+)
 }
 \arguments{
 \item{dataset}{a list of time series. See details for the required format.}

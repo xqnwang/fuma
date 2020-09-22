@@ -4,8 +4,7 @@
 \alias{simp_forec}
 \title{Combinate the forecasts and prediction intervals by simple average method}
 \usage{
-simp_forec(dataset, level, method.num, methodname = "comb",
-  parallel = FALSE)
+simp_forec(dataset, level, method.num, methodname = "comb", parallel = FALSE)
 }
 \arguments{
 \item{dataset}{a list of time series. See details for the required format.}

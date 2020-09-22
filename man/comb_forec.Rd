@@ -4,8 +4,16 @@
 \alias{comb_forec}
 \title{Combinate the forecasts and prediction intervals by assigned weights and threshold ratio}
 \usage{
-comb_forec(dataset, weightprob, Threshold, level, combine = "mean",
-  methodname = "comb", show.methods = FALSE, parallel = FALSE)
+comb_forec(
+  dataset,
+  weightprob,
+  Threshold,
+  level,
+  combine = "mean",
+  methodname = "comb",
+  show.methods = FALSE,
+  parallel = FALSE
+)
 }
 \arguments{
 \item{dataset}{a list of time series. See details for the required format.}

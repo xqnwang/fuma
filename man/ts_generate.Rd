@@ -4,8 +4,15 @@
 \alias{ts_generate}
 \title{Generate time series with various length by GRATIS.}
 \usage{
-ts_generate(n.ts = 1, freq = 1, nComp = NULL, length = NULL,
-  h = 1)
+ts_generate(
+  n.ts = 1,
+  freq = 1,
+  nComp = NULL,
+  length = NULL,
+  h = 1,
+  parallel = FALSE,
+  num.cores = 2
+)
 }
 \arguments{
 \item{n.ts}{number of time series to be generated.}
@@ -19,6 +26,10 @@ ts_generate(n.ts = 1, freq = 1, nComp = NULL, length = NULL,
 the generated time series is simply sampled from the length vector.}
 
 \item{h}{forecasting horizon of the generated time series.}
+
+\item{parallel}{logical. If TRUE then the generation process is conducted in parallel.}
+
+\item{num.cores}{the specified amount of parallel processes to be used if parallel = TRUE.}
 }
 \value{
 A list of the generated time series.
