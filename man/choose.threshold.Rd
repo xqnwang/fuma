@@ -10,7 +10,8 @@ choose.threshold(
   ratio,
   combine = "mean",
   level,
-  parallel = FALSE
+  parallel = FALSE,
+  num.cores = 2
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ scores is selected.}
 \item{level}{the confidence level of prediction intervals that are used for combination.}
 
 \item{parallel}{logical. If \code{TRUE} then the calculations are conducted in parallel.}
+
+\item{num.cores}{the specified amount of parallel processes to be used if parallel = TRUE.}
 }
 \value{
 A list with the following elements

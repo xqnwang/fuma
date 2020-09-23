@@ -18,6 +18,7 @@
 #' appended to a vector. This vector contains the names of methods that are selected for 
 #' model averaging.
 #' @param parallel logical. If \code{TRUE} then the calculations are conducted in parallel.
+#' @param num.cores the specified amount of parallel processes to be used if parallel = TRUE.
 #' 
 #' @details 
 #' \code{dataset} must be a list with each element having the following format:
@@ -58,7 +59,7 @@
 #' @export
 comb_forec <- function(dataset, weightprob, Threshold, level, 
                        combine = "mean", methodname = "comb", 
-                       show.methods = FALSE, parallel = FALSE) {
+                       show.methods = FALSE, parallel = FALSE, num.cores = 2) {
 
   weightprob <- split(weightprob, row(weightprob))
   comb.fun <- function(L1, L2){
@@ -130,7 +131,7 @@ comb_forec <- function(dataset, weightprob, Threshold, level,
   if (parallel == FALSE){
     ret_list <- combforec_fun(dat)
   } else {
-    ncores <- parallel::detectCores()
+    ncores <- num.cores
     ncores <- ifelse(length(dat) < ncores, length(dat), ncores)
     times_sp <- c(rep(floor(length(dat)/ncores), ncores - 1), 
                   length(dat) - floor(length(dat)/ncores) * (ncores - 1))

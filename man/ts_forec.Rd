@@ -4,7 +4,7 @@
 \alias{ts_forec}
 \title{Calculate point forecasts and prediction intervals for a time series dataset}
 \usage{
-ts_forec(dataset, methods, level = c(80, 90), parallel = FALSE)
+ts_forec(dataset, methods, level = c(80, 90), parallel = FALSE, num.cores = 2)
 }
 \arguments{
 \item{dataset}{a list containing the time series. See details for the required format.}
@@ -15,6 +15,8 @@ point forecasts and prediction intervals for time series.}
 \item{level}{the confidence levels for prediction intervals, such as 80, 90.}
 
 \item{parallel}{logical. If \code{TRUE} then the calculations are conducted in parallel.}
+
+\item{num.cores}{the specified amount of parallel processes to be used if parallel = TRUE.}
 }
 \value{
 A list with the elements having the following structure

@@ -16,6 +16,7 @@
 #' "mean", "weightedmean" or "median".
 #' @param level the confidence level of prediction intervals that are used for combination.
 #' @param parallel logical. If \code{TRUE} then the calculations are conducted in parallel.
+#' @param num.cores the specified amount of parallel processes to be used if parallel = TRUE.
 #' 
 #' @details 
 #' \code{dataset} must be a list with each element having the following format:
@@ -50,15 +51,15 @@
 #' @export
 choose.threshold <- function(dataset, fitProb, ratio, 
                              combine = "mean", level, 
-                             parallel = FALSE) {
+                             parallel = FALSE, num.cores = 2) {
   
   ret_list <- lapply(ratio, function(lentry){
     r <- rep(lentry,3)
     combforec <- comb_forec(dataset, weightprob = fitProb, 
                             Threshold = r, level = level, 
                             combine = combine, methodname = "comb", 
-                            show.methods = FALSE, parallel = parallel)
-    combscore <- calc_scores(combforec, parallel = parallel)
+                            show.methods = FALSE, parallel = parallel, num.cores = num.cores)
+    combscore <- calc_scores(combforec, parallel = parallel, num.cores = num.cores)
     msis_y <- lapply(Filter(function(l) l$period == "YEARLY", combscore), function(lentry){
      scores <- lentry$MSIS[[which(names(lentry$MSIS) == paste(level, "%", sep = ""))]]
      return(scores)

@@ -4,12 +4,14 @@
 \alias{calc_scores}
 \title{Calculate various scoring rules for a Time Series Dataset}
 \usage{
-calc_scores(dataset, parallel = FALSE)
+calc_scores(dataset, parallel = FALSE, num.cores = 2)
 }
 \arguments{
 \item{dataset}{the list containing the series. See details for the required format.}
 
 \item{parallel}{logical. If \code{TRUE} then the calculations are conducted in parallel.}
+
+\item{num.cores}{the specified amount of parallel processes to be used if parallel = TRUE.}
 }
 \value{
 A list with the elements having the following structure

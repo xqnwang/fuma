@@ -4,7 +4,7 @@
 \alias{gam.fun}
 \title{Train generalized additive models}
 \usage{
-gam.fun(X, Y, LogY = TRUE, k = 10, parallel = FALSE)
+gam.fun(X, Y, LogY = TRUE, k = 10, parallel = FALSE, num.cores = 2)
 }
 \arguments{
 \item{X}{a dataframe with \code{n} rows and \code{c} columns, 
@@ -22,6 +22,8 @@ when \code{mgcv} package is used to fit GAM.
 If \code{k} is not specified then basis specific defaults are used.}
 
 \item{parallel}{logical. If \code{TRUE} then the model training is conducted in parallel.}
+
+\item{num.cores}{the specified amount of parallel processes to be used if parallel = TRUE.}
 }
 \value{
 \code{gam.fun} returns a list with \code{F} generalized additive models 

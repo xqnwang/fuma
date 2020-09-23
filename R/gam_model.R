@@ -14,6 +14,7 @@
 #' when \code{mgcv} package is used to fit GAM. 
 #' If \code{k} is not specified then basis specific defaults are used.
 #' @param parallel logical. If \code{TRUE} then the model training is conducted in parallel.
+#' @param num.cores the specified amount of parallel processes to be used if parallel = TRUE.
 #'
 #' @return \code{gam.fun} returns a list with \code{F} generalized additive models 
 #' for each response variable.
@@ -28,7 +29,7 @@
 #' @importFrom foreach foreach
 #' @importFrom Information is.binary
 #' @export
-gam.fun <- function(X, Y, LogY = TRUE, k = 10, parallel = FALSE){ 
+gam.fun <- function(X, Y, LogY = TRUE, k = 10, parallel = FALSE, num.cores = 2){ 
   if (LogY == TRUE){
     Y <- log(Y)
   }else{
@@ -57,7 +58,7 @@ gam.fun <- function(X, Y, LogY = TRUE, k = 10, parallel = FALSE){
     if (parallel == FALSE){
       ret_list <- mgcv_fun(t(Y))
     } else {
-      ncores <- parallel::detectCores()
+      ncores <- num.cores
       ncores <- ifelse(ncol(Y) < ncores, ncol(Y), ncores)
       times_sp <- c(rep(floor(ncol(Y)/ncores), ncores - 1), 
                     ncol(Y) - floor(ncol(Y)/ncores) * (ncores - 1))

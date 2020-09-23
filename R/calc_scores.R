@@ -5,6 +5,7 @@
 #' with regard to MASE, sMAPE, MSIS, Spread, Coverage and Upper coverage. 
 #' @param dataset the list containing the series. See details for the required format.
 #' @param parallel logical. If \code{TRUE} then the calculations are conducted in parallel.
+#' @param num.cores the specified amount of parallel processes to be used if parallel = TRUE.
 #' 
 #' @details 
 #' \code{dataset} must be a list with each element having the following format:
@@ -47,7 +48,7 @@
 #' @importFrom foreach foreach
 #' @importFrom stats frequency
 #' @export
-calc_scores <- function(dataset, parallel = FALSE) {
+calc_scores <- function(dataset, parallel = FALSE, num.cores = 2) {
   
   scores_fun <- function(input){
     lapply(input, function(lentry){
@@ -99,7 +100,7 @@ calc_scores <- function(dataset, parallel = FALSE) {
   if (parallel == FALSE){
     ret_list <- scores_fun(dataset)
   } else {
-    ncores <- parallel::detectCores()
+    ncores <- num.cores
     ncores <- ifelse(length(dataset) < ncores, length(dataset), ncores)
     times_sp <- c(rep(floor(length(dataset)/ncores), ncores - 1), 
                   length(dataset) - floor(length(dataset)/ncores) * (ncores - 1))

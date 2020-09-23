@@ -4,7 +4,14 @@
 \alias{simp_forec}
 \title{Combinate the forecasts and prediction intervals by simple average method}
 \usage{
-simp_forec(dataset, level, method.num, methodname = "comb", parallel = FALSE)
+simp_forec(
+  dataset,
+  level,
+  method.num,
+  methodname = "comb",
+  parallel = FALSE,
+  num.cores = 2
+)
 }
 \arguments{
 \item{dataset}{a list of time series. See details for the required format.}
@@ -17,6 +24,8 @@ simp_forec(dataset, level, method.num, methodname = "comb", parallel = FALSE)
 \item{methodname}{string. the name used to name the combined forecasting results.}
 
 \item{parallel}{logical. If \code{TRUE} then the calculations are conducted in parallel.}
+
+\item{num.cores}{the specified amount of parallel processes to be used if parallel = TRUE.}
 }
 \value{
 A list with the elements having the following structure

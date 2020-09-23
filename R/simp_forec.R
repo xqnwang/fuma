@@ -9,6 +9,7 @@
 #' \code{method.num} rows in \code{ff} will be selected for simple averaging.
 #' @param methodname string. the name used to name the combined forecasting results.
 #' @param parallel logical. If \code{TRUE} then the calculations are conducted in parallel.
+#' @param num.cores the specified amount of parallel processes to be used if parallel = TRUE.
 #' 
 #' @details 
 #' \code{dataset} must be a list with each element having the following format:
@@ -47,7 +48,8 @@
 #' @importFrom doParallel registerDoParallel
 #' @importFrom foreach foreach
 #' @export
-simp_forec <- function(dataset, level, method.num, methodname = "comb", parallel = FALSE) {
+simp_forec <- function(dataset, level, method.num, methodname = "comb", 
+                       parallel = FALSE, num.cores = 2) {
   
   combforec_fun <- function(input){
     lapply(input, function(lentry){
@@ -79,7 +81,7 @@ simp_forec <- function(dataset, level, method.num, methodname = "comb", parallel
   if (parallel == FALSE){
     ret_list <- combforec_fun(dataset)
   } else {
-    ncores <- parallel::detectCores()
+    ncores <- num.cores
     ncores <- ifelse(length(dataset) < ncores, length(dataset), ncores)
     times_sp <- c(rep(floor(length(dataset)/ncores), ncores - 1), 
                   length(dataset) - floor(length(dataset)/ncores) * (ncores - 1))

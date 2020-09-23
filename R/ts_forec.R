@@ -7,6 +7,7 @@
 #' point forecasts and prediction intervals for time series.
 #' @param level the confidence levels for prediction intervals, such as 80, 90.
 #' @param parallel logical. If \code{TRUE} then the calculations are conducted in parallel.
+#' @param num.cores the specified amount of parallel processes to be used if parallel = TRUE.
 #' 
 #' @details 
 #' \code{dataset} must be a list with each element having the following format:
@@ -80,7 +81,8 @@
 #' @importFrom doParallel registerDoParallel
 #' @importFrom foreach foreach
 #' @export
-ts_forec <- function(dataset, methods, level = c(80,90), parallel = FALSE) {
+ts_forec <- function(dataset, methods, level = c(80,90), 
+                     parallel = FALSE, num.cores = 2) {
   
   forec_fun <- function(input){
     lapply(input, function (seriesdata) {
@@ -114,7 +116,7 @@ ts_forec <- function(dataset, methods, level = c(80,90), parallel = FALSE) {
   if (parallel == FALSE){
     ret_list <- forec_fun(dataset)
   } else {
-    ncores <- parallel::detectCores()
+    ncores <- num.cores
     ncores <- ifelse(length(dataset) < ncores, length(dataset), ncores)
     times_sp <- c(rep(floor(length(dataset)/ncores), ncores - 1), 
                   length(dataset) - floor(length(dataset)/ncores) * (ncores - 1))

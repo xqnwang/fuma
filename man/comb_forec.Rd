@@ -12,7 +12,8 @@ comb_forec(
   combine = "mean",
   methodname = "comb",
   show.methods = FALSE,
-  parallel = FALSE
+  parallel = FALSE,
+  num.cores = 2
 )
 }
 \arguments{
@@ -37,6 +38,8 @@ appended to a vector. This vector contains the names of methods that are selecte
 model averaging.}
 
 \item{parallel}{logical. If \code{TRUE} then the calculations are conducted in parallel.}
+
+\item{num.cores}{the specified amount of parallel processes to be used if parallel = TRUE.}
 }
 \value{
 A list with the elements having the following structure
