@@ -72,13 +72,13 @@ comb_forec <- function(dataset, weightprob, Threshold, level,
     lapply(input, function(lentry){
       methodnames <- rownames(lentry$ff)
       
-      if (lentry$period == "YEARLY"){
+      if (toupper(lentry$period) == "YEARLY"){
         prob_hat <- lentry$weightprob[-which(rownames(lentry$ff) == "snaive")]
         threshold <- Threshold[1]
-      } else if (lentry$period == "QUARTERLY"){
+      } else if (toupper(lentry$period) == "QUARTERLY"){
         prob_hat <- lentry$weightprob
         threshold <- Threshold[2]
-      } else if (lentry$period == "MONTHLY"){
+      } else if (toupper(lentry$period) == "MONTHLY"){
         prob_hat <- lentry$weightprob
         threshold <- Threshold[3]
       }
