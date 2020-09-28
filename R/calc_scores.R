@@ -70,7 +70,7 @@ calc_scores <- function(dataset, parallel = FALSE, num.cores = 2) {
       
       # interval forecasting accuracy
       ## MSIS; Spread; Coverage; UpperCoverage
-      msis <- spread <- IfInn <- IfInu <- NULL
+      msis <- spread <- IfInn <- IfInu <- IfInl <- NULL
       for (i in seq_len(length(lower))){
         low <- lower[[i]]
         up <- upper[[i]]
@@ -81,18 +81,21 @@ calc_scores <- function(dataset, parallel = FALSE, num.cores = 2) {
         spread0 <- (up - low) / scaling
         IfInn0 <- ifelse(xx > low & xx < up, 1, 0)
         IfInu0 <- ifelse(xx < up, 1, 0)
+        IfInl0 <- ifelse(xx > low, 1, 0)
         msis <- append(msis, list(msis0))
         spread <- append(spread, list(spread0))
         IfInn <- append(IfInn, list(IfInn0))
         IfInu <- append(IfInu, list(IfInu0))
+        IfInl <- append(IfInl, list(IfInl0))
       }
-      names(msis) <- names(spread) <- names(IfInn) <- names(IfInu) <- names(lower)
+      names(msis) <- names(spread) <- names(IfInn) <- names(IfInu) <- names(IfInl) <- names(lower)
       lentry$MASE <- mase
       lentry$sMAPE <- smape
       lentry$MSIS <- msis
       lentry$Spread <- spread
       lentry$IfInn <- IfInn
       lentry$IfInu <- IfInu
+      lentry$IfInl <- IfInl
       return(lentry)
     })
   }
