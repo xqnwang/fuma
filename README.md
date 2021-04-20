@@ -213,6 +213,6 @@ fuma_forec <- comb_forec(fuma_forec, weightprob = gam_preprob,
 References
 ----------
 
-- Wang, X., Kang, Y., Petropoulos, F., & Li, F. (2019). Que ser\'a ser\'a? The uncertainty estimation of feature-based time series forecasts. [Working paper on arXiv](https://arxiv.org/abs/1908.02891).
+- Xiaoqian Wang, Yanfei Kang, Fotios Petropoulos & Feng Li (2021): The uncertainty estimation of feature-based forecast combinations, Journal of the Operational Research Society, DOI: [10.1080/01605682.2021.1880297](https://www.tandfonline.com/doi/full/10.1080/01605682.2021.1880297), [Working paper](https://arxiv.org/abs/1908.02891).
 
 
