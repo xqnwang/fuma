@@ -3,7 +3,7 @@
 
 Forecast uncertainty based on model averaging.
 
-The R package `fuma` provides implementations of the uncertainty estimation of feature-based time series forecasts, see our [paper](https://arxiv.org/abs/1908.02891) for the details.
+The R package `fuma` provides implementations of the uncertainty estimation of feature-based time series forecasts, see our [paper](https://doi.org/10.1080/01605682.2021.1880297) for the details.
 
 Installation
 ------------
@@ -17,7 +17,7 @@ devtools::install_github("xqnwang/fuma")
 Usage
 -----
 
-This part explains how to reproduce the results for our working paper. The feature-based framework for the uncertainty estimation is applied in this part to obtain the forecasts and prediction intervals of M4 dataset for the confidence level 95\%.
+This part explains how to reproduce the results for our [published paper](https://doi.org/10.1080/01605682.2021.1880297). The feature-based framework for the uncertainty estimation is applied in this part to obtain the forecasts and prediction intervals of M4 dataset for the confidence level 95\%.
 
 ### The reference dataset and test dataset
 
@@ -214,5 +214,4 @@ References
 ----------
 
 - Xiaoqian Wang, Yanfei Kang, Fotios Petropoulos & Feng Li (2021): The uncertainty estimation of feature-based forecast combinations, Journal of the Operational Research Society, DOI: [10.1080/01605682.2021.1880297](https://www.tandfonline.com/doi/full/10.1080/01605682.2021.1880297), [Working paper](https://arxiv.org/abs/1908.02891).
-
 
